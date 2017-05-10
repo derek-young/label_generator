@@ -4,12 +4,20 @@
   "description": "Generate clothing labels with related product associations.",
   "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/index.js",
+    "build": "webpack --config webpack.config.js --watch",
+    "build:prod": "webpack -p --config webpack.config.js"
   },
   "repository": {
     "type": "git",
     "url": "http://derek-impekable@gitlab.impekable.cloud/accenture/retail/label-generator.git"
   },
   "author": "derek@impekable.com",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "morgan": "^1.8.1"
+  }
 }
