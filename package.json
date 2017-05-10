@@ -1,0 +1,15 @@
+{
+  "name": "label-generator",
+  "version": "1.0.0",
+  "description": "Generate clothing labels with related product associations.",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://derek-impekable@gitlab.impekable.cloud/accenture/retail/label-generator.git"
+  },
+  "author": "derek@impekable.com",
+  "license": "ISC"
+}
