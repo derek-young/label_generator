@@ -18,7 +18,7 @@ export default class App extends Component {
     return (
       <Router>
         <div>
-          {this.state.loggedIn ? <Header /> : ''}
+          <Header loggedIn={this.state.loggedIn} />
           <Route exact path="/" component={Login}/>
           <Route path="/admin/create" component={CreateProduct}/>
           <Route path="/admin/view" component={ViewProduct}/>
