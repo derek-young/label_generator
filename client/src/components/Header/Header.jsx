@@ -1,9 +1,9 @@
 import React from 'react';
 import headerStyles from './Header.css';
 
-const Header = ({ loggedIn, name }) => (
+const Header = ({ name }) => (
   <div className={headerStyles.main}>
-    {loggedIn ?
+    {name ?
       <div className={headerStyles.menu}>
         <div>
           <img src="img/hamburger.png" />

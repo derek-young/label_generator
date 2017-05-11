@@ -37,3 +37,7 @@
   width: 30px;
   margin-left: 10px;
 }
+
+.menu img:hover {
+  cursor: pointer;
+}

@@ -13,24 +13,15 @@ export default class ViewProduct extends Component {
     super(props);
     this.state = {
       showBarcode: false,
-      createPairing: false,
-      selectedProduct: '2981 2837 172830',
-      savedProducts: {
-        '2981 2837 172830': {
-          sku: '2981 2837 172830',
-          name: 'Gabriella Dress',
-          desc: 'The little black dress reinvented: black silk georgette is embroidered with colorful hand-sewn tassels for an update on a classic that is not to be missed. Pull-over style and adjustable shoulder straps make for easy',
-          price: 995.00,
-          size: 6,
-          pair: null
-        }
-      }
+      createPairing: false
     }
   }
 
   render() {
-    const selected = this.state.savedProducts[this.state.selectedProduct];
+    const { selected, products } = this.props;
     const hasPairing = selected.pair;
+
+    console.log(products);
 
     return (
       <div className={styles.container}>

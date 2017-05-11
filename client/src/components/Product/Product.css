@@ -21,6 +21,10 @@
   font-size: 18px;
 }
 
+.info {
+  width: 100%;
+}
+
 .info h4 {
   margin-bottom: 5px;
 }
