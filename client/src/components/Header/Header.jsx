@@ -1,14 +1,15 @@
 import React from 'react';
 import headerStyles from './Header.css';
 
-const Header = ({ loggedIn }) => (
+const Header = ({ loggedIn, name }) => (
   <div className={headerStyles.main}>
     {loggedIn ?
       <div className={headerStyles.menu}>
         <div>
           <img src="img/hamburger.png" />
         </div>
-        <h3>Name Placeholder</h3>
+        <h3>{name}</h3>
+        <div></div>
       </div>
       :
       <div>

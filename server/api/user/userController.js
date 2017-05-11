@@ -1,17 +1,90 @@
-'use strict';
-// const User = require('./userModel');
+const jwt = require('jsonwebtoken');
+const User = require('./userModel.js');
+const dbconfig = require('../../db/dbconfig.js');
 
 const controller = {
+  signin: function(req, res, next) {
+    console.log(req.query);
+    console.log(req.body);
+    //Retrieve user from DB and authenticate
+    User.findOne({
+      where: {
+        username: req.query.username
+      }
+    })
+    .then(function(user) {
+      console.log(user, ' user in signin');
+      if (user && User.validatePW(req.query.password, user.password)) {
+        const token = jwt.sign({
+          user: user.username,
+          id: user.id
+        },
+        dbconfig.secret, {
+          expiresIn: 86400 // expires in 24 hours
+        });
 
-  getUser: function(req, res, next) {
-    console.log('get req to user');
+        return res.json({
+          username: user.username,
+          success: true,
+          token: token
+        });
+      }
+
+      return res.status(403).send('Invalid username or password');
+    });
   },
 
-  addUser: function(req, res, next) {
-    const user = req.body;
-    const email = req.body.email;
+  create: function(req, res, next) {
+    const password = User.generateHash(req.body.password);
 
-    console.log('post req to user');
+    User.findOrCreate({
+      where: {
+        username: req.body.username
+      },
+      defaults: {
+        password: password
+      }
+    })
+    .spread(function(user, created) {
+      if (created) {
+        console.log('User was successfully created');
+        const token = jwt.sign({
+          user: user.username,
+          id: user.id
+        },
+        dbconfig.secret, {
+          expiresIn: 86400 // expires in 24 hours
+        });
+
+        return res.json({
+          success: true,
+          token: token
+        });
+      }
+
+      return res.sendStatus(500);
+    })
+    .catch(function(err) {
+      if (err.original.code === '23505') {
+        return res.status(403).send('That username address already exists, please login');
+      }
+      console.log('Error creating user: ', err);
+      return res.sendStatus(500);
+    });
+  },
+
+  authenticate: function(req, res, next) {
+    const token = req.headers.token;
+    jwt.verify(token, dbconfig.secret, function(err, payload) {
+      if (err) {
+        res.status(403).send('Invalid authentication token');
+      } else {
+        res.status(200).send({
+          user: payload.user,
+          id: payload.id
+        });
+      }
+    });
   }
 };
 

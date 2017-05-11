@@ -24,12 +24,12 @@
 }
 
 .menu div {
-  flex-grow: 1;
   height: 30px;
+  width: 60px;
 }
 
 .menu h3 {
-  flex-grow: 2;
+  text-align: center;
 }
 
 .menu img {

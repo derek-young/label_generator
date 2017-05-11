@@ -6,7 +6,7 @@ const port = process.env.PORT || 8080;
 
 require('./middleware')(app, express);
 
-app.use('api', api);
+app.use('/api', api);
 
 app.get('*', function(req, res) {
   res.redirect('/');

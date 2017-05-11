@@ -4,19 +4,19 @@ import { Link } from 'react-router-dom';
 import styles from '../App.css';
 import loginStyles from './Login.css';
 
-const Login = () => (
+const Login = ({ signin }) => (
   <div className={styles.container + ' ' + loginStyles.main}>
     <div className={styles.header}>
       Use your credentials to login.
     </div>
     <form className={styles.form}>
-      <input type="text" name="Username" placeholder="Username or Email"/>
-      <input type="password" name="Password" placeholder="Password"/>
+      <input type="text" id="username" placeholder="Username or Email"/>
+      <input type="password" id="password" placeholder="Password"/>
     </form>
 
-    <Link className={styles.link} to="/admin/create">
-      <button className={styles.button}>Login</button>
-    </Link>
+    <button onClick={signin} className={styles.button}>
+      Login
+    </button>
     <a href="#">Forgot Password?</a>
   </div>
 );
