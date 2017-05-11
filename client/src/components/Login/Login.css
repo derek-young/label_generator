@@ -1,0 +1,13 @@
+.main a {
+  font-size: 14px;
+  color: #98999e;
+  margin-top: 20px;
+}
+
+.main a:hover {
+  color: #b4b4b4;
+}
+
+.main a:visited {
+  color: #98999e;
+}

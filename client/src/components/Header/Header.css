@@ -1,0 +1,43 @@
+.main {
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ececed;
+  border-bottom: 1px solid #dcdcdd;
+  justify-content: space-around;
+}
+
+.main, .menu {
+  display: flex;
+  align-items: center;
+}
+
+.main h3 {
+  text-transform: uppercase;
+  font-weight: 100;
+}
+
+.menu {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.menu div {
+  height: 30px;
+  width: 60px;
+}
+
+.menu h3 {
+  text-align: center;
+}
+
+.menu img {
+  height: 30px;
+  width: 30px;
+  margin-left: 10px;
+}
+
+.menu img:hover {
+  cursor: pointer;
+}
