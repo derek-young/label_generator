@@ -25,6 +25,7 @@ build:
   image: node:latest
   script:
   - npm install
+  - npm install webpack yarn
   - npm run build
 
 package:
