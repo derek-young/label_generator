@@ -1,0 +1,67 @@
+/*   Create Product   */
+
+#desc {
+  height: 180px;
+  font-size: 16px;
+  height: 150px;
+  border: 1px solid #ececed;
+  padding: 1em;
+  color: #98999e;
+}
+
+::placeholder {
+  color: #c8c9cf;
+}
+
+
+
+/*   View Product   */
+
+.header {
+  font-size: 18px;
+}
+
+.info h4 {
+  margin-bottom: 5px;
+}
+
+.info > div {
+  margin-bottom: 30px;
+}
+
+.barcode {
+  margin-top: 5px;
+  text-decoration: underline;
+}
+
+.barcode:hover {
+  cursor: pointer;
+  color: #b4b4b4;
+}
+
+
+  /* Create Pairing */
+  .main form {
+    margin: 20px 0 40px 0;
+  }
+
+  .background-line {
+    color: #99999d;
+    display: table;
+    margin-bottom: 20px;
+    white-space: nowrap;
+  }
+
+  .background-line:before, .background-line:after {
+    border-top: 1px solid #99999d;
+    content: '';
+    display: table-cell;
+    position: relative;
+    top: 1em;
+    width: 50%;
+  }
+
+  .background-line span {
+    margin: 0 12px;
+    line-height: 2;
+  }

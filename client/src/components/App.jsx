@@ -10,18 +10,22 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      loggedIn: false
+      auth: {
+        loggedIn: true,
+        username: null,
+        displayName: null
+      }
     }
   }
 
-  render () {
+  render() {
     return (
       <Router>
         <div>
-          <Header loggedIn={this.state.loggedIn} />
-          <Route exact path="/" component={Login}/>
-          <Route path="/admin/create" component={CreateProduct}/>
-          <Route path="/admin/view" component={ViewProduct}/>
+          <Header loggedIn={this.state.auth.loggedIn} />
+          <Route exact path="/" component={Login} />
+          <Route path="/admin/create" component={CreateProduct} />
+          <Route path="/admin/view" component={ViewProduct} />
         </div>
       </Router>
     );

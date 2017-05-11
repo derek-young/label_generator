@@ -8,6 +8,10 @@ require('./middleware')(app, express);
 
 app.use('api', api);
 
+app.get('*', function(req, res) {
+  res.redirect('/');
+});
+
 app.listen(port, function() {
   console.log('listening on port ' + port);
 });
