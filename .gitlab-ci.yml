@@ -48,7 +48,7 @@ deploy-client-dev:
   stage: deploy
   image: python:latest
   variables:
-  - S3_BUCKET_NAME: "accenture-fashionpair-dev"
+    S3_BUCKET_NAME: "accenture-fashionpair-dev"
   script:
   - pip install awscli
   - mkdir -p ./pack/$CI_BUILD_REF_NAME
