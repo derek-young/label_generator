@@ -7,6 +7,7 @@ import productStyles from '../Product.css';
 import CreatePairing from './CreatePairing';
 import ViewPairing from './ViewPairing';
 import ProductInfo from './ProductInfo';
+import BackgroundLine from './BackgroundLine';
 
 export default class ViewProduct extends Component {
   constructor(props) {
@@ -18,10 +19,8 @@ export default class ViewProduct extends Component {
   }
 
   render() {
-    const { selected, products } = this.props;
-    const hasPairing = selected.pair;
-
-    console.log(products);
+    const { selected, products, getPairing, pairImg } = this.props;
+    const pairedProduct = products[selected.pair];
 
     return (
       <div className={styles.container}>
@@ -33,25 +32,22 @@ export default class ViewProduct extends Component {
           toggleBarcode={this.toggleBarcode.bind(this)}
         />
 
-        <CreatePairing createPairing={this.createPairing.bind(this)}/>
-        {/* {this.state.createPairing ?
-          hasPairing ?
-            <ViewPairing />
-            :
-            <CreatePairing />
+        {pairedProduct ? <ViewPairing pair={pairedProduct} />
+          : this.state.createPairing ?
+          <CreatePairing createPairing={getPairing} />
           :
           <button
             className={styles.button}
             onClick={this.toggleCreatePairing.bind(this)}>
             Make Product Pairing
           </button>
-        } */}
+        }
+
       </div>
     );
   }
 
   toggleBarcode() {
-    console.log(this.state.showBarcode)
     this.setState({
       showBarcode: !this.state.showBarcode
     });
@@ -61,9 +57,5 @@ export default class ViewProduct extends Component {
     this.setState({
       createPairing: !this.state.createPairing
     });
-  }
-
-  createPairing() {
-    console.log('pairing created');
   }
 }

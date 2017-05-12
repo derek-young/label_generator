@@ -19,6 +19,7 @@
 
 .header {
   font-size: 18px;
+  text-align: center;
 }
 
 .info {
@@ -44,7 +45,9 @@
 }
 
 
+
   /* Create Pairing */
+
   .main form {
     margin: 20px 0 40px 0;
   }
@@ -68,4 +71,22 @@
   .background-line span {
     margin: 0 12px;
     line-height: 2;
+  }
+
+
+  /* View Pairing */
+
+  .pair-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pair-image > div {
+    width: 250px;
+  }
+
+  .pair-image img {
+    width: 100%;
+    margin: 20px 0;
   }

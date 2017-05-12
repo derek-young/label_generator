@@ -6,6 +6,7 @@ import Header from './Header/Header';
 import Login from './Login/Login';
 import CreateProduct from './Product/Create/CreateProduct';
 import ViewProduct from './Product/View/ViewProduct';
+import PrintableLabel from './Product/Label/PrintableLabel';
 
 export default class App extends Component {
   constructor(props) {
@@ -22,7 +23,8 @@ export default class App extends Component {
           desc: 'The little black dress reinvented: black silk georgette is embroidered with colorful hand-sewn tassels for an update on a classic that is not to be missed. Pull-over style and adjustable shoulder straps make for easy',
           price: 995.00,
           size: 6,
-          pair: null
+          pair: null,
+          img: null
         }
       }
     }
@@ -41,7 +43,18 @@ export default class App extends Component {
           () => <CreateProduct updateProduct={this.updateProduct.bind(this)}/>
         } />
         <Route path="/admin/view" component={
-          () => <ViewProduct selected={selected} products={this.state.savedProducts}/>
+          () =>
+            <ViewProduct
+              selected={selected}
+              products={this.state.savedProducts}
+              getPairing={this.getPairing.bind(this)}
+            />
+        } />
+        <Route path="/admin/print" component={
+          () => <PrintableLabel
+            selected={selected}
+            products={this.state.savedProducts}
+          />
         } />
       </div>
     );
@@ -102,6 +115,10 @@ export default class App extends Component {
 
       this.context.router.history.push('/admin/view');
       this.saveProduct(product);
+    } else {
+      // DELETE THIS ******************************************
+
+      this.context.router.history.push('/admin/view');
     }
   }
 
@@ -131,8 +148,6 @@ export default class App extends Component {
     })
     .then(function(res) {
       if (res.status === 200) {
-        console.log(res, ' res from retrieve products');
-
         if (res.data.length > 0) {
           const products = {};
           for (let i = 0; i < res.data.length; i++) {
@@ -148,6 +163,64 @@ export default class App extends Component {
     })
     .catch(function(error) {
       console.log(error, ' error retrieving products');
+    });
+  }
+
+  getPairing() {
+    const context = this;
+    const url = document.getElementById('pairing-url').value;
+
+    axios.get(url, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(res => res.data)
+    .then(({ product }) => {
+      const {
+        body_html,
+        image: {
+          src: img
+        },
+        variants: [
+          {
+            option1: size,
+            price,
+            product_id: sku
+          }
+        ],
+        title: name
+      } = product;
+
+      const parser = new DOMParser();
+      const body = parser.parseFromString(body_html, "text/html").documentElement;
+      const desc = body.innerText.trim();
+
+      const pairProduct = {
+        sku,
+        name,
+        desc,
+        price: Number(price),
+        size: Number(size),
+        pair: null,
+        img
+      };
+
+      const selected = context.state.savedProducts[context.state.selectedProduct];
+      selected.pair = sku; // Create pair association
+      context.context.router.history.push('/admin/view');
+
+      context.setState({
+        savedProducts: {
+          ...context.state.savedProducts,
+          [sku]: pairProduct
+        }
+      });
+
+    })
+    .catch(function(error) {
+      console.log(error, ' error retrieving HTML from pairing URL');
     });
   }
 }

@@ -12,7 +12,11 @@ const CreatePairing = ({ createPairing }) => (
       Online Product Location:
     </div>
     <form className={styles.form}>
-      <input type="url" name="Username" placeholder="Paste URL"/>
+      <input
+        id="pairing-url"
+        type="url"
+        placeholder="Paste URL"
+      />
     </form>
     <button
       className={styles.button}
