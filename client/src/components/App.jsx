@@ -35,23 +35,23 @@ export default class App extends Component {
 
     return (
       <div>
-        <Header name={this.state.username} />
-        <Route exact path="/" component={
-          () => <Login signin={this.signin.bind(this)}/>
+        <Header user={this.state.username} />
+        <Route exact path="/" component={() =>
+          <Login signin={this.signin.bind(this)}/>
         } />
-        <Route path="/admin/create" component={
-          () => <CreateProduct updateProduct={this.updateProduct.bind(this)}/>
+        <Route path="/admin/create" component={() =>
+          <CreateProduct updateProduct={this.updateProduct.bind(this)}/>
         } />
-        <Route path="/admin/view" component={
-          () =>
-            <ViewProduct
-              selected={selected}
-              products={this.state.savedProducts}
-              getPairing={this.getPairing.bind(this)}
-            />
+        <Route path="/admin/view" component={() =>
+          <ViewProduct
+            selected={selected}
+            products={this.state.savedProducts}
+            getPairing={this.getPairing.bind(this)}
+          />
         } />
-        <Route path="/admin/print" component={
-          () => <PrintableLabel
+        <Route path="/admin/print" component={() =>
+          <PrintableLabel
+            user={this.state.username}
             selected={selected}
             products={this.state.savedProducts}
           />
@@ -115,10 +115,6 @@ export default class App extends Component {
 
       this.context.router.history.push('/admin/view');
       this.saveProduct(product);
-    } else {
-      // DELETE THIS ******************************************
-
-      this.context.router.history.push('/admin/view');
     }
   }
 
@@ -155,7 +151,7 @@ export default class App extends Component {
           }
 
           context.setState({
-            selectedProduct: res.data[0].sku,
+            selectedProduct: res.data[res.data.length - 1].sku,
             savedProducts: products
           });
         }

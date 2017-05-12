@@ -1,9 +1,74 @@
-.tag {
-  width: 250px;
-  background-color: white;
-  border: 1px solid black;
+.back {
+  color: #bdbcbd;
+  background-color: #e9e9ea;
+  width: 100%;
+  position: absolute;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.back div {
+  margin-left: 10px;
+}
+
+.back:hover {
+  cursor: pointer;
 }
 
 .header {
   font-size: 18px;
+}
+
+.button {
+  margin-top: 50px;
+}
+
+.bullet {
+  font-size: 60px;
+}
+
+.light {
+  color: #58595b;
+}
+
+.dark {
+  color: black;
+}
+
+.tag {
+  padding: 0 25px;
+  width: 250px;
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.tag section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.tag section:first-child {
+  margin-bottom: 15px;
+  border-bottom: 0.5px solid black;
+}
+
+.tag img {
+  margin: 15px 0;
+  width: 80%;
+}
+
+.tag h3, .tag h4, .tag h5 {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.tag p {
+  font-weight: 300;
+  font-size: 14px;
+  color: #58595b;
 }

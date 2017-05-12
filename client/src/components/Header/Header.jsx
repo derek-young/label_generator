@@ -1,22 +1,22 @@
 import React from 'react';
 import headerStyles from './Header.css';
 
-const Header = ({ name }) => (
-  <div className={headerStyles.main}>
-    {name ?
-      <div className={headerStyles.menu}>
+const Header = ({ user }) => (
+  <header className={headerStyles.main}>
+    {user ?
+      <header className={headerStyles.menu}>
         <div>
           <img src="img/hamburger.png" />
         </div>
-        <h3>{name}</h3>
+        <h3>{user}</h3>
         <div></div>
-      </div>
+      </header>
       :
-      <div>
+      <header>
         <h3>Login</h3>
-      </div>
+      </header>
     }
-  </div>
+  </header>
 );
 
 export default Header;
