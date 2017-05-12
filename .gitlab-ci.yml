@@ -6,12 +6,14 @@
 stages:
   - build
   - package
+  - deploy
 
 #before_scripts:
 #  
 #
-#variables:
-#  S3_BUCKET_NAME: "accenture-fashionpair"
+variables:
+  S3_BUCKET_NAME: "accenture-fashionpair"
+  S3_DEFAULT_REGION: "us-west-2"
 #
 #
 # This folder is cached between builds
@@ -25,13 +27,33 @@ build:
   image: node:latest
   script:
   - npm install
-  - npm install webpack yarn
   - npm run build
 
-package:
+package-client:
   stage: package
   script:
   - ls -la
+
+deploy-client-production:
+  stage: deploy
+  environment: production
+  image: python:latest
+  script:
+  - pip install awscli
+  - aws s3 cp ./client/dist s3://$S3_BUCKET_NAME/ --recursive
+  only:
+  - master
+
+deploy-client-dev:
+  stage: deploy
+  image: python:latest
+  variables:
+  - S3_BUCKET_NAME: "accenture-fashionpair-dev"
+  script:
+  - pip install awscli
+  - mkdir -p ./pack/$CI_BUILD_REF_NAME
+  - cp ./client/dist/* ./pack/$CI_BUILD_REF_NAME/
+  - aws s3 cp ./pack/ s3://$S3_BUCKET_NAME/ --recursive
 
 #deploy:
 #  image: python:latest
