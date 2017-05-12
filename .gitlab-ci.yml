@@ -32,7 +32,8 @@ build:
 package-client:
   stage: package
   script:
-  - ls -la
+  - ls -laR client
+  - ls -laR server
 
 deploy-client-production:
   stage: deploy
