@@ -52,7 +52,7 @@ deploy-client-dev:
   script:
   - pip install awscli
   - mkdir -p ./pack/$CI_BUILD_REF_NAME
-  - cp ./client/dist/* ./pack/$CI_BUILD_REF_NAME/
+  - cp -R ./client/dist/* ./pack/$CI_BUILD_REF_NAME/
   - aws s3 cp ./pack/ s3://$S3_BUCKET_NAME/ --recursive
 
 #deploy:
