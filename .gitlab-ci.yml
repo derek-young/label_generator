@@ -12,8 +12,8 @@ stages:
 #  
 #
 variables:
-  S3_BUCKET_NAME: "accenture-fashionpair"
-  S3_DEFAULT_REGION: "us-west-2"
+  S3_BUCKET_NAME: "accenture-fashionpair.lab.impekable.com"
+  S3_DEFAULT_REGION: "us-west-1"
 #
 #
 # This folder is cached between builds
@@ -48,7 +48,7 @@ deploy-client-dev:
   stage: deploy
   image: python:latest
   variables:
-    S3_BUCKET_NAME: "accenture-fashionpair-dev"
+    S3_BUCKET_NAME: "dev.accenture-fashionpair.lab.impekable.com"
   script:
   - pip install awscli
   - mkdir -p ./pack/$CI_BUILD_REF_NAME
