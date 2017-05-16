@@ -24,7 +24,8 @@ export default class App extends Component {
           price: 995.00,
           size: 6,
           pair: null,
-          img: null
+          img: null,
+          url: null
         }
       }
     }
@@ -116,6 +117,11 @@ export default class App extends Component {
       this.context.router.history.push('/admin/view');
       this.saveProduct(product);
     }
+
+    //********************* DELETE - Testing only ***********************
+    else {
+      this.context.router.history.push('/admin/view');
+    }
   }
 
   saveProduct(product) {
@@ -200,7 +206,8 @@ export default class App extends Component {
         price: Number(price),
         size: Number(size),
         pair: null,
-        img
+        img,
+        url
       };
 
       const selected = context.state.savedProducts[context.state.selectedProduct];

@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/index.js",
     "build": "webpack --config webpack.config.js",
-    "build:prod": "webpack -p --config webpack.config.js"
+    "build:dev": "webpack -p --config webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "jsonwebtoken": "^7.4.0",
     "morgan": "^1.8.1",
     "pg": "^6.1.5",
+    "qr-image": "^3.2.0",
     "sequelize": "^3.30.4"
   },
   "devDependencies": {
