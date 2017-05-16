@@ -22,9 +22,9 @@
     "express": "^4.15.2",
     "jsonwebtoken": "^7.4.0",
     "morgan": "^1.8.1",
-    "pg": "^6.1.5",
     "qr-image": "^3.2.0",
-    "sequelize": "^3.30.4"
+    "sequelize": "^3.30.4",
+    "sqlite3": "^3.1.8"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

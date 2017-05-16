@@ -117,11 +117,6 @@ export default class App extends Component {
       this.context.router.history.push('/admin/view');
       this.saveProduct(product);
     }
-
-    //********************* DELETE - Testing only ***********************
-    else {
-      this.context.router.history.push('/admin/view');
-    }
   }
 
   saveProduct(product) {

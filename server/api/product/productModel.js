@@ -17,11 +17,6 @@ const Product = db.define('product', {
   },
   price: {
     type: Sequelize.INTEGER
-  },
-  userID: {
-    type: Sequelize.INTEGER,
-    model: 'users',
-    key: 'id'
   }
 });
 

@@ -26,9 +26,8 @@ const controller = {
     const token = req.body.token;
     const product = req.body.product;
     const payload = jwt.verify(token, dbconfig.secret);
-    const userID = payload.id;
 
-    product.userID = userID;
+    product.userId = payload.id;
 
     Product.create(product)
     .then(function() {
