@@ -62,6 +62,8 @@ export default class App extends Component {
   }
 
   signin(e) {
+    e.preventDefault();
+
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
@@ -116,6 +118,10 @@ export default class App extends Component {
 
       this.context.router.history.push('/admin/view');
       this.saveProduct(product);
+    }
+
+    else {
+      this.context.router.history.push('/admin/view');
     }
   }
 

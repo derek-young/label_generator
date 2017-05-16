@@ -29,7 +29,16 @@ p {
 }
 
 @media print {
-  .header, button, header {
-    display: none;
+  body * {
+    visibility: hidden;
+  }
+
+  #tag, #tag * {
+    visibility: visible;
+  }
+
+  #tag {
+    position: absolute;
+    top: 0;
   }
 }

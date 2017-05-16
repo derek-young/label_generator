@@ -49,7 +49,7 @@ export default class PrintableLabel extends React.Component {
         <div className={styles.header + ' header ' + labelStyles.header}>
           Product Tag
         </div>
-        <div className={labelStyles.tag}>
+        <div className={labelStyles.tag} id="tag">
           <section>
             <span className={labelStyles.bullet}>&#8226;</span>
             <h3>Size: {size}</h3>

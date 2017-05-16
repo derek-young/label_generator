@@ -41,6 +41,7 @@
 }
 
 .tag {
+  margin: 10px 0;
   padding: 0 25px;
   width: 250px;
   background-color: white;

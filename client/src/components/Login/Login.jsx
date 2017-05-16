@@ -12,11 +12,13 @@ const Login = ({ signin }) => (
     <form className={styles.form}>
       <input type="text" id="username" placeholder="Username or Email"/>
       <input type="password" id="password" placeholder="Password"/>
+
+      <button type="submit" onClick={signin} className={styles.button}>
+        Login
+      </button>
+
     </form>
 
-    <button onClick={signin} className={styles.button}>
-      Login
-    </button>
     <a href="#">Forgot Password?</a>
   </div>
 );
