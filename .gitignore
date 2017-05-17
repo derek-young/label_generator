@@ -1,0 +1,4 @@
+node_modules/
+client/dist/bundle.js
+server/db/dbconfig.js
+.DS_Store
