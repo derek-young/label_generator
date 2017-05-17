@@ -7,6 +7,7 @@ const ProductInfo = ({
   price,
   size,
   sku,
+  showBarcode,
   toggleBarcode
 }) => (
   <div className={productStyles.info}>
@@ -31,9 +32,15 @@ const ProductInfo = ({
       <p>
         {sku}
       </p>
-      <p className={productStyles.barcode} onClick={toggleBarcode}>
-        View Barcode
-      </p>
+      { showBarcode ?
+        <div className={productStyles.barcode} id="barcode"></div>
+        :
+        <p
+          className={productStyles['barcode-text']}
+          onClick={() => toggleBarcode.call(this, sku)}>
+          View Barcode
+        </p>
+      }
     </div>
   </div>
 );

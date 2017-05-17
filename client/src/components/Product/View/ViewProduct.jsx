@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ioBarcode from 'io-barcode';
 
 import styles from '../../App.css';
 import productStyles from '../Product.css';
@@ -18,6 +19,17 @@ export default class ViewProduct extends Component {
     }
   }
 
+  // componentDidMount() {
+  //   const barcode = new Image();
+  //   const canvas = ioBarcode.CODE128B(sku, {
+  //     width: 1,
+  //     height: 25
+  //   });
+  //
+  //   barcode.src = canvas.toDataURL('image/png');
+  //   document.getElementById('barcode').appendChild(barcode);
+  // }
+
   render() {
     const { selected, products, getPairing, pairImg } = this.props;
     const pairedProduct = products[selected.pair];
@@ -29,6 +41,7 @@ export default class ViewProduct extends Component {
         </div>
         <ProductInfo
           {...selected}
+          showBarcode={this.state.showBarcode}
           toggleBarcode={this.toggleBarcode.bind(this)}
         />
 
@@ -47,9 +60,18 @@ export default class ViewProduct extends Component {
     );
   }
 
-  toggleBarcode() {
+  toggleBarcode(sku) {
     this.setState({
       showBarcode: !this.state.showBarcode
+    }, () => {
+      const barcode = new Image();
+      const canvas = ioBarcode.CODE128B(sku, {
+        width: 1,
+        height: 25
+      });
+
+      barcode.src = canvas.toDataURL('image/png');
+      document.getElementById('barcode').appendChild(barcode);
     });
   }
 

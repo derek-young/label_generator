@@ -35,11 +35,17 @@
 }
 
 .barcode {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.barcode-text {
   margin-top: 5px;
   text-decoration: underline;
 }
 
-.barcode:hover {
+.barcode-text:hover {
   cursor: pointer;
   color: #b4b4b4;
 }
