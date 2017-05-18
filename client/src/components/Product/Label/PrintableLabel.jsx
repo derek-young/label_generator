@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import ioBarcode from 'io-barcode';
 
 import styles from '../../App.css';
 import labelStyles from './LabelStyles.css';
@@ -8,20 +9,28 @@ import labelStyles from './LabelStyles.css';
 export default class PrintableLabel extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      barcodeURL: ''
+    };
   }
 
   componentDidMount() {
-    const { selected: { pair }, products } = this.props;
+    const { selected: { pair, sku }, products } = this.props;
     const { url: pairURL } = products[pair];
+    const barcode = new Image();
+    const canvas = ioBarcode.CODE128B(sku, {
+      width: 1,
+      height: 25
+    });
+
+    barcode.src = canvas.toDataURL('image/png');
+    document.getElementById('barcode').appendChild(barcode);
 
     axios.post('/api/qr', {
       url: pairURL
     })
     .then(function(res) {
-      console.log(res);
-      var svg = res.data;
-      // svg = document.createElementNS(svg, "svg");
-      // document.body.appendChild(svg);
+      const svg = res.data;
       document.getElementById('qr-code').innerHTML = svg;
     })
     .catch(function(error) {
@@ -31,7 +40,7 @@ export default class PrintableLabel extends React.Component {
 
   render() {
     const { selected, products, user } = this.props;
-    const { name, desc, size, price, pair } = selected;
+    const { name, desc, size, price, pair, sku } = selected;
     const {
       name: pairName,
       desc: pairDesc,
@@ -59,8 +68,8 @@ export default class PrintableLabel extends React.Component {
             <p>{desc}</p>
             <br />
             <h4>${price}</h4>
-            <br />
-            <div>Barcode Placeholder</div>
+            <div id="barcode"></div>
+            <h4>{sku}</h4>
           </section>
           <section>
             <h4>
