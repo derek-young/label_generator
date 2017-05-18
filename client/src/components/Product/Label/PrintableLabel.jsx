@@ -40,7 +40,7 @@ export default class PrintableLabel extends React.Component {
 
   render() {
     const { selected, products, user } = this.props;
-    const { name, desc, size, price, pair } = selected;
+    const { name, desc, size, price, pair, sku } = selected;
     const {
       name: pairName,
       desc: pairDesc,
@@ -69,6 +69,7 @@ export default class PrintableLabel extends React.Component {
             <br />
             <h4>${price}</h4>
             <div id="barcode"></div>
+            <h4>{sku}</h4>
           </section>
           <section>
             <h4>

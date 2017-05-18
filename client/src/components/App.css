@@ -66,3 +66,7 @@
 .form input::placeholder {
   color: #c8c9cf;
 }
+
+#barcode img {
+  margin-bottom: 0px;
+}
