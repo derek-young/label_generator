@@ -21,7 +21,7 @@ const ProductInfo = ({
     </div>
     <div>
       <h4>Price</h4>
-      <p>${price.toFixed(2)}</p>
+      <p>${price}</p>
     </div>
     <div>
       <h4>Size</h4>
