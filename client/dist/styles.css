@@ -46,3 +46,7 @@ p {
 #barcode img {
   margin-bottom: 3px;
 }
+
+.light-grey {
+  color: #c8c9cf !important;
+}

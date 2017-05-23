@@ -93,18 +93,19 @@ export default class App extends Component {
   }
 
   updateProduct() {
+    const selectList = document.getElementById('size');
     const name = document.querySelector('#create-product input[name="Name"]').value;
     const desc = document.querySelector('#create-product textarea[name="Desc"]').value;
     const price = document.querySelector('#create-product input[name="Price"]').value;
-    const size = document.querySelector('#create-product input[name="Size"]').value;
+    const size = selectList.options[selectList.selectedIndex].text;
     const sku = document.querySelector('#create-product input[name="SKU"]').value;
 
     const product = {
       sku,
       name,
       desc,
-      price: Number(price),
-      size: Number(size)
+      price,
+      size
     };
 
     if (sku) {
@@ -118,10 +119,6 @@ export default class App extends Component {
 
       this.context.router.history.push('/admin/view');
       this.saveProduct(product);
-    }
-
-    else {
-      this.context.router.history.push('/admin/view');
     }
   }
 
