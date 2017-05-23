@@ -55,19 +55,18 @@ export default class PrintableLabel extends React.Component {
           </div>
         </Link>
 
-        <div className={styles.header + ' header ' + labelStyles.header}>
+        <div className={styles.header + ' ' + labelStyles.header}>
           Product Tag
         </div>
         <div className={labelStyles.tag} id="tag">
           <section>
             <span className={labelStyles.bullet}>&#8226;</span>
             <h3>Size: {size}</h3>
-            <br />
             <h4>{name}</h4>
-            <br />
-            <p>{desc}</p>
-            <br />
-            <h4>${price}</h4>
+            <div className={labelStyles.desc}>
+              <p>{desc}</p>
+            </div>
+            <h4>{price}</h4>
             <div id="barcode"></div>
             <h4>{sku}</h4>
           </section>
@@ -78,19 +77,16 @@ export default class PrintableLabel extends React.Component {
               </span>
             </h4>
             <p>Recommended pairing</p>
-            <img src={pairImg} />
+            <img className={labelStyles['pair-img']} src={pairImg} />
             <h4>{pairName}</h4>
-            <br />
-            <br />
-            <p>{pairDesc}</p>
-            <br />
-            <br />
+            <div className={labelStyles.desc}>
+              <p>{pairDesc}</p>
+            </div>
             <p>
               <span className={labelStyles.dark}>
                 Paired Product:
               </span>
             </p>
-            <br />
             <div id="qr-code" className={labelStyles['qr-code']}></div>
           </section>
         </div>

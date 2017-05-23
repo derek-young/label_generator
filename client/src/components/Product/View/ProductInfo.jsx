@@ -21,7 +21,7 @@ const ProductInfo = ({
     </div>
     <div>
       <h4>Price</h4>
-      <p>${price}</p>
+      <p>{price}</p>
     </div>
     <div>
       <h4>Size</h4>

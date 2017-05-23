@@ -15,19 +15,8 @@ export default class App extends Component {
     this.state = {
       username: null,
       displayName: null,
-      selectedProduct: '2981 2837 172830',
-      savedProducts: {
-        '2981 2837 172830': {
-          sku: '2981 2837 172830',
-          name: 'Gabriella Dress',
-          desc: 'The little black dress reinvented: black silk georgette is embroidered with colorful hand-sewn tassels for an update on a classic that is not to be missed. Pull-over style and adjustable shoulder straps make for easy',
-          price: 995.00,
-          size: 6,
-          pair: null,
-          img: null,
-          url: null
-        }
-      }
+      selectedProduct: null,
+      savedProducts: {}
     }
   }
 

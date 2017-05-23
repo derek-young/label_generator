@@ -19,17 +19,6 @@ export default class ViewProduct extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   const barcode = new Image();
-  //   const canvas = ioBarcode.CODE128B(sku, {
-  //     width: 1,
-  //     height: 25
-  //   });
-  //
-  //   barcode.src = canvas.toDataURL('image/png');
-  //   document.getElementById('barcode').appendChild(barcode);
-  // }
-
   render() {
     const { selected, products, getPairing, pairImg } = this.props;
     const pairedProduct = products[selected.pair];
