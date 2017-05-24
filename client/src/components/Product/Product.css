@@ -20,6 +20,23 @@
   text-align: center;
 }
 
+.edit {
+  width: 20px;
+}
+
+.edit img:hover {
+  cursor: pointer;
+}
+
+.edit img {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
 .info {
   width: 100%;
 }

@@ -16,6 +16,8 @@ export default class App extends Component {
       username: null,
       displayName: null,
       selectedProduct: null,
+      createPairing: false,
+      clean: true,
       savedProducts: {}
     }
   }
@@ -30,13 +32,21 @@ export default class App extends Component {
           <Login signin={this.signin.bind(this)}/>
         } />
         <Route path="/admin/create" component={() =>
-          <CreateProduct updateProduct={this.updateProduct.bind(this)}/>
+          <CreateProduct
+            updateProduct={this.updateProduct.bind(this)}
+            selected={selected}
+            clean={this.state.clean}
+          />
         } />
         <Route path="/admin/view" component={() =>
           <ViewProduct
             selected={selected}
             products={this.state.savedProducts}
+            editProductDetails={this.editProductDetails.bind(this)}
             getPairing={this.getPairing.bind(this)}
+            removePair={this.removePair.bind(this)}
+            createPairing={this.state.createPairing}
+            toggleCreatePairing={this.toggleCreatePairing.bind(this)}
           />
         } />
         <Route path="/admin/print" component={() =>
@@ -85,8 +95,8 @@ export default class App extends Component {
     const selectList = document.getElementById('size');
     const name = document.querySelector('#create-product input[name="Name"]').value;
     const desc = document.querySelector('#create-product textarea[name="Desc"]').value;
+    const size = document.querySelector('#create-product input[name="Size"]').value;
     const price = document.querySelector('#create-product input[name="Price"]').value;
-    const size = selectList.options[selectList.selectedIndex].text;
     const sku = document.querySelector('#create-product input[name="SKU"]').value;
 
     const product = {
@@ -155,6 +165,14 @@ export default class App extends Component {
     });
   }
 
+  editProductDetails() {
+    this.setState({
+      clean: false
+    }, () => {
+      this.context.router.history.push('/admin/create');
+    });
+  }
+
   getPairing() {
     const context = this;
     const url = document.getElementById('pairing-url').value;
@@ -211,6 +229,27 @@ export default class App extends Component {
     })
     .catch(function(error) {
       console.log(error, ' error retrieving HTML from pairing URL');
+    });
+  }
+
+  removePair() {
+    const selected = this.state.savedProducts[this.state.selectedProduct];
+
+    this.setState({
+      createPairing: true,
+      savedProducts: {
+        ...this.state.savedProducts,
+        [this.state.selectedProduct]: {
+          ...selected,
+          pair: null
+        }
+      }
+    });
+  }
+
+  toggleCreatePairing() {
+    this.setState({
+      createPairing: !this.state.createPairing
     });
   }
 }

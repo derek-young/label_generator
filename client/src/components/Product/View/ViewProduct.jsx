@@ -14,19 +14,32 @@ export default class ViewProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showBarcode: false,
-      createPairing: false
+      showBarcode: false
     }
   }
 
   render() {
-    const { selected, products, getPairing, pairImg } = this.props;
+    const {
+      selected,
+      products,
+      editProductDetails,
+      getPairing,
+      removePair,
+      createPairing,
+      toggleCreatePairing
+    } = this.props;
     const pairedProduct = products[selected.pair];
 
     return (
       <div className={styles.container}>
-        <div className={styles.header + ' ' + productStyles.header}>
-          In-Store Product Details
+        <div className={styles.header + ' ' + productStyles.row}>
+          <div className={productStyles.edit}></div>
+          <div className={productStyles.header}>
+            In-Store Product Details
+          </div>
+          <div className={productStyles.edit} onClick={editProductDetails}>
+            <img src="/img/edit.png" />
+          </div>
         </div>
         <ProductInfo
           {...selected}
@@ -34,13 +47,19 @@ export default class ViewProduct extends Component {
           toggleBarcode={this.toggleBarcode.bind(this)}
         />
 
-        {pairedProduct ? <ViewPairing pair={pairedProduct} />
-          : this.state.createPairing ?
-          <CreatePairing createPairing={getPairing} />
+        {pairedProduct ?
+          <ViewPairing
+            pair={pairedProduct}
+            removePair={removePair}
+          />
+          : createPairing ?
+          <CreatePairing
+            createPairing={getPairing}
+          />
           :
           <button
             className={styles.button}
-            onClick={this.toggleCreatePairing.bind(this)}>
+            onClick={toggleCreatePairing}>
             Make Product Pairing
           </button>
         }
@@ -61,12 +80,6 @@ export default class ViewProduct extends Component {
 
       barcode.src = canvas.toDataURL('image/png');
       document.getElementById('barcode').appendChild(barcode);
-    });
-  }
-
-  toggleCreatePairing() {
-    this.setState({
-      createPairing: !this.state.createPairing
     });
   }
 }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from '../../App.css';
 import productStyles from '../Product.css';
 
-const ViewPairing = ({ pair }) => {
+const ViewPairing = ({ pair, removePair }) => {
   const { name, desc, img } = pair;
 
   return (
@@ -12,8 +12,14 @@ const ViewPairing = ({ pair }) => {
       <div className={productStyles['background-line']}>
         <span>Pair With</span>
       </div>
-      <div className={productStyles.header}>
-        Paired Product
+      <div className={productStyles.row}>
+        <div className={productStyles.edit}></div>
+        <div className={productStyles.header}>
+          Paired Product
+        </div>
+        <div className={productStyles.edit} onClick={removePair}>
+          <img src="/img/edit.png" />
+        </div>
       </div>
       <div className={productStyles['pair-image']}>
         <div>
