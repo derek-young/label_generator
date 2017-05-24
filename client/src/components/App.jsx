@@ -25,6 +25,11 @@ export default class App extends Component {
 
   render() {
     const selected = this.state.savedProducts[this.state.selectedProduct];
+    let paired;
+
+    if (selected) {
+      paired = this.state.savedProducts[selected.pair];
+    }
 
     return (
       <div>
@@ -59,6 +64,9 @@ export default class App extends Component {
         } />
         <Route path="/admin/card" component={() =>
           <PrintableCard
+            user={this.state.username}
+            selected={selected}
+            paired={paired}
           />
         } />
       </div>
@@ -124,6 +132,11 @@ export default class App extends Component {
       this.context.router.history.push('/admin/view');
       this.saveProduct(product);
     }
+
+        /* DELETE - For testing only */
+        else {
+          this.context.router.history.push('/admin/view');
+        }
   }
 
   saveProduct(product) {

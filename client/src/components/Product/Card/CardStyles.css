@@ -93,4 +93,7 @@
 
 .back-inner h3 {
   font-weight: 400;
+  margin: 0 10px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
