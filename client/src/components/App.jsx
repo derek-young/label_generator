@@ -7,6 +7,7 @@ import Login from './Login/Login';
 import CreateProduct from './Product/Create/CreateProduct';
 import ViewProduct from './Product/View/ViewProduct';
 import PrintableLabel from './Product/Label/PrintableLabel';
+import PrintableCard from './Product/Card/PrintableCard';
 
 export default class App extends Component {
   constructor(props) {
@@ -54,6 +55,10 @@ export default class App extends Component {
             user={this.state.username}
             selected={selected}
             products={this.state.savedProducts}
+          />
+        } />
+        <Route path="/admin/card" component={() =>
+          <PrintableCard
           />
         } />
       </div>

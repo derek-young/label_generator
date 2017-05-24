@@ -36,9 +36,14 @@ const ViewPairing = ({ pair, removePair }) => {
           <p>{desc}</p>
         </div>
       </div>
-      <Link to="/admin/print">
+      <Link className={productStyles.link} to="/admin/print">
         <button className={styles.button}>
           Generate Clothing Tag
+        </button>
+      </Link>
+      <Link to="/admin/card">
+        <button className={styles.button}>
+          Generate Business Card
         </button>
       </Link>
     </div>

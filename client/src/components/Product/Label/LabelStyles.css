@@ -4,23 +4,6 @@
   margin-top: 10px;
 }
 
-.back {
-  color: #bdbcbd;
-  background-color: #e9e9ea;
-  width: 100%;
-  position: absolute;
-  text-decoration: none;
-  padding: 10px;
-}
-
-.back div {
-  margin-left: 10px;
-}
-
-.back:hover {
-  cursor: pointer;
-}
-
 .header {
   font-size: 18px;
 }

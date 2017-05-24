@@ -49,7 +49,7 @@ export default class PrintableLabel extends React.Component {
 
     return (
       <div className={styles.container}>
-        <Link className={labelStyles.back} to="/admin/view">
+        <Link className={styles.back} to="/admin/view">
           <div>
             &#8592; Back
           </div>

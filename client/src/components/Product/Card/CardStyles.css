@@ -1,0 +1,96 @@
+.button {
+  margin-top: 50px;
+}
+
+.card {
+  letter-spacing: 0.1em;
+}
+
+.front, .back-outer, .back-inner, .column {
+  display: flex;
+}
+
+.front, .back-inner, .column {
+  flex-direction: column;
+}
+
+.front, .back-outer {
+  height: 2in;
+  width: 3.5in;
+}
+
+.front, .back-inner {
+  justify-content: space-around;
+}
+
+.column {
+  justify-content: center;
+}
+
+
+/*    Front    */
+
+.front {
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.front div {
+  height: 20%;
+  text-align: center;
+}
+
+.front h3, .front h4 {
+  text-transform: uppercase;
+}
+
+.front h3 {
+  font-size: 8pt;
+  font-weight: 700;
+}
+
+.front h4 {
+  font-size: 7pt;
+  font-weight: 500;
+}
+
+.front p {
+  margin-top: 1em;
+  font-size: 6pt;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+}
+
+
+/*    Back    */
+
+.back-outer {
+  background-color: black;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-inner {
+  color: white;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  border: 1px solid white;
+  font-size: 6pt;
+  text-align: center;
+}
+
+.back-inner p, .back-inner h3 {
+  text-transform: uppercase;
+}
+
+.back-inner p {
+  letter-spacing: 0.2em;
+  font-weight: 300;
+  margin-bottom: 0.7em;
+}
+
+.back-inner h3 {
+  font-weight: 400;
+}
